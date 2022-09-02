@@ -27,6 +27,7 @@
     gnupg
     tmux
     pinentry
+    lazygit
   ];
 
   programs.gpg = { enable = true; };
