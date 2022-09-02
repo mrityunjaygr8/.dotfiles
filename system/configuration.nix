@@ -75,6 +75,10 @@
       firefox
     ];
   };
+  programs.zsh.enable = true;
+  users.extraUsers.mgr8 = {
+      shell = pkgs.zsh;
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -84,7 +88,6 @@
     bind
     htop
     zsh
-    fish
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
