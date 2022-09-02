@@ -35,13 +35,15 @@
     enable = true;
   };
 
-  programs.git.extraConfig = {
-    init = {
-      defaultBranch = "main";
-    };
-    user = {
-      email = "mrityunjaysaxena1996@gmail.com";
-      name = "Mrityunjay Saxena";
+  programs.git = {
+    enable = true;
+    userName = "Mrityunjay Saxena";
+    userEmail = "mrityunjaysaxena1996@gmail.com";
+
+    extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
     };
   };
 
