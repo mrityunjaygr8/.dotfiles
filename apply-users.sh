@@ -1,5 +1,5 @@
 #!/bin/sh
 
-pushd ~/.dotfiles/
+pushd ~/.nixfiles/
 home-manager switch -f ./users/mgr8/home.nix
 popd
