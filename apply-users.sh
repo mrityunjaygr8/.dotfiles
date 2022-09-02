@@ -1,5 +1,6 @@
 #!/bin/sh
 
 pushd ~/.dotfiles/
-home-manager switch -f ./users/mgr8/home.nix
+nix build .\#homeManagerConfigurations.mgr8.activationPackage
+./result/activate
 popd
