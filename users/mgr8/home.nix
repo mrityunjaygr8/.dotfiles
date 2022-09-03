@@ -256,6 +256,9 @@
         o = "open";
         p = "python3";
       };
+      interactiveShellInit = ''
+        set -Ux GIT_ASKPASS ""
+      '';
       functions = {
         fish_greeting = {
           description = "Greeting to show when starting a fish shell";
