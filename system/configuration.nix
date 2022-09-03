@@ -75,7 +75,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mgr8 = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
     initialPassword = "password";
     packages = with pkgs; [
       firefox
@@ -96,6 +96,8 @@
     zsh
     git
   ];
+
+  virtualisation.docker.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
