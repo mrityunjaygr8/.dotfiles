@@ -27,12 +27,22 @@
     tmux
     pinentry
     lazygit
+    lazydocker
     gcc
     rustc
     neofetch
     nodejs
     nodePackages.npm
     nodePackages.pnpm
+    postman
+    teams
+    ripgrep
+    fd
+    bat
+    exa
+    python
+    docker
+    docker-compose
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ];})
   ];
 
@@ -248,6 +258,7 @@
         mv = "mv -i";
         mkdir = "mkdir -p";
         tmux = "tmux -u";
+        ll = "exa -alhtaccessed";
       };
       shellAbbrs = {
         g = "git";
