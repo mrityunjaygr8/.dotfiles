@@ -40,9 +40,13 @@
     fd
     bat
     exa
-    python
+    python3
+    python310Packages.pip
     docker
     docker-compose
+    zip
+    unzip
+    awscli2
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ];})
   ];
 
@@ -246,11 +250,22 @@
             sha256 = "sha256-ciUNJrZE1EJ6YeMmEIjX/vDiP2MCG1AYHpdjeQOOSxg=";
           };
         }
+        {
+          name = "virtualfish";
+          src = pkgs.fetchFromGitHub {
+            owner = "justinmayer";
+            repo = "virtualfish";
+            rev = "e6163a009cad32feb02a55a631c66d1cc3f22eaa";
+            sha256 = "sha256-ciUNJrZE1EJ6YeMmEIjX/vDiP2MCG1AYHpdjeQOOSxg=";
+          };
+        }
       ];
       shellInit = ''
         # Set syntax highlighting colours; var names defined here:
         # http://fishshell.com/docs/current/index.html#variables-color
         set fish_color_autosuggestion brblack
+        set -Ux GIT_ASKPASS ""
+        fish_add_path ${config.home.homeDirectory}/.local/bin
       '';
       shellAliases = {
         rm = "rm -i";
@@ -258,7 +273,7 @@
         mv = "mv -i";
         mkdir = "mkdir -p";
         tmux = "tmux -u";
-        ll = "exa -alhtaccessed";
+        ll = "";
       };
       shellAbbrs = {
         g = "git";
@@ -267,9 +282,6 @@
         o = "open";
         p = "python3";
       };
-      interactiveShellInit = ''
-        set -Ux GIT_ASKPASS ""
-      '';
       functions = {
         fish_greeting = {
           description = "Greeting to show when starting a fish shell";
