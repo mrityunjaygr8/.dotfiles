@@ -9,7 +9,7 @@ font:
     family: JetBrainsMono Nerd Font
 
 shell:
-  program: /bin/fish
+  program: fish
 
 # everblush
 colors:
