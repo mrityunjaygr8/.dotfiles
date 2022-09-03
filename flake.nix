@@ -2,8 +2,8 @@
   description = "mgr8's system config";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-22.05";
-    home-manager.url = "github:nix-community/home-manager/release-22.05";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -20,13 +20,12 @@
     in {
       homeManagerConfigurations = {
         mgr8 = home-manager.lib.homeManagerConfiguration {
-          inherit system pkgs;
+	  inherit pkgs;
 
-          stateVersion = "22.05";
-	  username = "mgr8";
-	  homeDirectory = "/home/mgr8";
-	  configuration = import ./users/mgr8/home.nix;
-	};
+          modules = [ 
+            ./users/mgr8/home.nix
+          ];
+        };
       };
       nixosConfigurations = {
         nixos = lib.nixosSystem {
