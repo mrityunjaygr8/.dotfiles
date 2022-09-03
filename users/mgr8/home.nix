@@ -22,7 +22,6 @@
   home.packages = with pkgs; [
     alacritty
     neovim
-    git
     git-crypt
     gnupg
     tmux
