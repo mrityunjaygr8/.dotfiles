@@ -13,14 +13,14 @@
 
       pkgs = import nixpkgs {
         inherit system;
-	config = { allowUnfree = true; };
+        config = { allowUnfree = true; };
       };
 
       lib = nixpkgs.lib;
     in {
       homeManagerConfigurations = {
         mgr8 = home-manager.lib.homeManagerConfiguration {
-	  inherit pkgs;
+          inherit pkgs;
 
           modules = [ 
             ./users/mgr8/home.nix
@@ -31,11 +31,10 @@
         nixos = lib.nixosSystem {
           inherit system;
 
-	  modules = [
+          modules = [
             ./system/vm-configuration.nix
-	  ];
-	};
+          ];
+        };
       };
-
     };
 }
