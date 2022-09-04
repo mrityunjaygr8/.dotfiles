@@ -373,10 +373,17 @@
       ];
 
       wm_keybinds = {
+        "org/gnome/shell/keybindings" = {
+          toggle-message-tray=''@as []'';
+        };
+        "org/gnome/settings-daemon/plugins/media-keys" = {
+          volume-down=["<Control><Alt>minus" "XF86AudioLowerVolume"];
+          volume-mute=["<Control><Alt>0" "XF86AudioMute"];
+          volume-up=["<Control><Alt>equal" "XF86AudioRaiseVolume"];
+        };
         "org/gnome/desktop/wm/keybindings" = {
           close = ["<Shift><Super>c"];
           toggle-maximized=["<Super>m"];
-          toggle-message-tray=''@as []'';
         };
       };
     in
