@@ -278,7 +278,7 @@
         mv = "mv -i";
         mkdir = "mkdir -p";
         tmux = "tmux -u";
-        ll = "";
+        ll = "exa -alhtaccessed";
       };
       shellAbbrs = {
         g = "git";
