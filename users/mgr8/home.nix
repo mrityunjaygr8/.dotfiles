@@ -391,7 +391,7 @@
 
       wm_keybinds = {
         "org/gnome/shell/keybindings" = {
-          toggle-message-tray=''@as []'';
+          toggle-message-tray=[];
         };
         "org/gnome/settings-daemon/plugins/media-keys" = {
           volume-down=["<Control><Alt>minus" "XF86AudioLowerVolume"];
