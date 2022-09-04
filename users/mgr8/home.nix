@@ -265,6 +265,15 @@
             sha256 = "sha256-ciUNJrZE1EJ6YeMmEIjX/vDiP2MCG1AYHpdjeQOOSxg=";
           };
         }
+        {
+          name = "fzf";
+          src = pkgs.fetchFromGitHub {
+            owner = "jethrokuan";
+            repo = "fzf";
+            rev = "479fa67d7439b23095e01b64987ae79a91a4e283";
+            sha256 = "sha256-ciUNJrZE1EJ6YeMmEIjX/vDiP2MCG1AYHpdjeQOOSxg=";
+          };
+        }
       ];
       shellInit = ''
         # Set syntax highlighting colours; var names defined here:
