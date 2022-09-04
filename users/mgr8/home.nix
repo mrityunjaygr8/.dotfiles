@@ -20,7 +20,6 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    alacritty
     neovim
     git-crypt
     gnupg
@@ -48,6 +47,12 @@
     unzip
     awscli2
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ];})
+    ( alacritty.overrideAttrs (attrs: {
+      postInstall = (attrs.postInstall or "") + ''
+        rm -rf $out/share/applications/Alacritty.desktop
+      '';
+
+    }))
   ];
 
   programs.gpg = { enable = true; };
@@ -195,7 +200,7 @@
         setw -g window-status-current-format "#[fg=$thm_bg,bg=$thm_orange] #I #[fg=$thm_fg,bg=$thm_bg] #{b:pane_current_path} "
 
         # parent_dir/current_dir
-        # setw -g window-status-format "#[fg=colour232,bg=colour111] #I #[fg=colour222,bg=colour235] #(echo "#{pane_current_path}" | rev | cut -d'/' -f-2 | rev) "
+        # setw -g window-status-format "#[fg=colour232,bg=colour111] #I #[fg=colour222,bg=colour235] #(uecho "#{pane_current_path}" | rev | cut -d'/' -f-2 | revu) "
         # setw -g window-status-current-format "#[fg=colour232,bg=colour208] #I #[fg=colour255,bg=colour237] #(echo "#{pane_current_path}" | rev | cut -d'/' -f-2 | rev) "
 
         # --------=== Modes
@@ -285,7 +290,7 @@
       functions = {
         fish_greeting = {
           description = "Greeting to show when starting a fish shell";
-          body = "";
+          body = "echo noot noot";
         };
         mkdcd = {
           description = "Make a directory tree and enter it";
@@ -295,10 +300,21 @@
     };
   };
 
+
   xdg.configFile.nvim = {
     source = ../../config/nvim;
     recursive = true;
   };
+
+  xdg.desktopEntries.alacritty = {
+      name = "Alacritty";
+      genericName = "Terminal";
+      type= "Application";
+      exec = "env -u WAYLAND_DISPLAY alacritty";
+      icon = "Alacritty";
+      categories = ["System" "TerminalEmulator"];
+      comment = "A fast, cross-platform, OpenGL terminal emulator";
+    };
 
 
   home.file = {
@@ -307,4 +323,5 @@
         recursive = true;
     };
   };
+  home.sessionVariables.NIXOS_OZONE_WL = "1";
 }
