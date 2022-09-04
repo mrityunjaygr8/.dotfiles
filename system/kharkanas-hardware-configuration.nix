@@ -12,6 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.supportedFilesystems = ["ntfs"];
 
   fileSystems."/" =
     { device = "/dev/disk/by-label/NIXOS-ROOT";
@@ -21,6 +22,11 @@
   fileSystems."/home" =
     { device = "/dev/disk/by-label/NIXOS-HOME";
       fsType = "btrfs";
+    };
+  fileSystems."/mnt/Storage" =
+    { device = "/dev/disk/by-label/Storage";
+      fsType = "ntfs";
+      options = ["rw" "uid=1000"];
     };
 
   fileSystems."/boot" =
