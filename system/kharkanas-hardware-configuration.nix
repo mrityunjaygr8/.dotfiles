@@ -23,11 +23,6 @@
     { device = "/dev/disk/by-label/NIXOS-HOME";
       fsType = "btrfs";
     };
-  fileSystems."/mnt/Storage" =
-    { device = "/dev/disk/by-label/Storage";
-      fsType = "ntfs";
-      options = ["rw" "uid=1000"];
-    };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-label/NIXOS-BOOT";
