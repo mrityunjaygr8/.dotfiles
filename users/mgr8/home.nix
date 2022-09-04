@@ -29,7 +29,6 @@
     pinentry
     lazygit
     lazydocker
-    gcc
     rustc
     neofetch
     nodejs
