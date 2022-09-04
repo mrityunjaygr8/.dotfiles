@@ -13,5 +13,6 @@
 
 
   networking.hostName = "kharkanas"; # Define your hostname.
+  hardware.bluetooth.enable = true;
 }
 
