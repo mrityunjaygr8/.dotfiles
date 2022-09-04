@@ -35,6 +35,13 @@
             ./system/vm-configuration.nix
           ];
         };
+        kharkanas = lib.nixosSystem {
+          inherit system;
+
+          modules = [
+            ./system/kharkanas-configuration.nix
+          ];
+        };
       };
     };
 }
