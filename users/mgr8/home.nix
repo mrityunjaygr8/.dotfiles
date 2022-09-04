@@ -20,6 +20,8 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    vlc
+    tldr
     neovim
     git-crypt
     gnupg
