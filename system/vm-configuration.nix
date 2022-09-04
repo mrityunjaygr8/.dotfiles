@@ -13,8 +13,5 @@
 
 
   networking.hostName = "nixos"; # Define your hostname.
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
 }
 
