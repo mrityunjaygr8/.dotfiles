@@ -32,7 +32,7 @@
           inherit system;
 
 	  modules = [
-            ./system/configuration.nix
+            ./system/vm-configuration.nix
 	  ];
 	};
       };
