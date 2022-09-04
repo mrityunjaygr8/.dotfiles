@@ -66,6 +66,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
     initialPassword = "password";
+    uid = 1000;
     packages = with pkgs; [
       firefox
     ];
