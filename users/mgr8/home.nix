@@ -31,6 +31,7 @@
     lazygit
     lazydocker
     rustc
+    cargo
     neofetch
     nodejs
     nodePackages.npm
@@ -48,6 +49,8 @@
     zip
     unzip
     awscli2
+    go
+    gopls
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ];})
     ( alacritty.overrideAttrs (attrs: {
       postInstall = (attrs.postInstall or "") + ''
