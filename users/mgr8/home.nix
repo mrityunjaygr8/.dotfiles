@@ -376,6 +376,7 @@
         "org/gnome/desktop/wm/keybindings" = {
           close = ["<Shift><Super>c"];
           toggle-maximized=["<Super>m"];
+          toggle-message-tray=''@as []'';
         };
       };
     in
