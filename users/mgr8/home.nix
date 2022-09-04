@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -323,5 +323,60 @@
         recursive = true;
     };
   };
-  home.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  dconf.settings = let 
+    custom_shortcuts =
+    let
+      inherit (builtins) length head tail listToAttrs genList;
+      range = a: b: if a < b then [a] ++ range (a+1) b else [];
+      globalPath = "org/gnome/settings-daemon/plugins/media-keys";
+      path = "${globalPath}/custom-keybindings";
+      mkPath = id: "${globalPath}/custom${toString id}";
+      isEmpty = list: length list == 0;
+      mkSettings = settings:
+        let
+          checkSettings = { name, command, binding }@this: this;
+          aux = i: list:
+            if isEmpty list then [] else
+              let
+                hd = head list;
+                tl = tail list;
+                name = mkPath i;
+              in
+                aux (i+1) tl ++ [ {
+                  name = mkPath i;
+                  value = checkSettings hd;
+                } ];
+          settingsList = (aux 0 settings);
+        in
+          listToAttrs (settingsList ++ [
+            {
+              name = globalPath;
+              value = {
+                custom-keybindings = genList (i: "/${mkPath i}/") (length settingsList);
+              };
+            }
+          ]);
+    in
+      mkSettings [
+        {
+          name = "Launch Alacritty";
+          command = "env -u WAYLAND_DISPLAY alacritty";
+          binding = "<Super>Return";
+        }
+        {
+          name = "Launch Firefox";
+          command = "firefox";
+          binding = "<Super>b";
+        }
+      ];
+
+      wm_keybinds = {
+        "org/gnome/desktop/wm/keybindings" = {
+          close = ["<Shift><Super>c"];
+          toggle-maximized=["<Super>m"];
+        };
+      };
+    in
+      lib.mkMerge [custom_shortcuts wm_keybinds];
 }
