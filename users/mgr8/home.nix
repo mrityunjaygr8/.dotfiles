@@ -271,7 +271,7 @@
         # http://fishshell.com/docs/current/index.html#variables-color
         set fish_color_autosuggestion brblack
         set -Ux GIT_ASKPASS ""
-        fish_add_path ${config.home.homeDirectory}/.local/bin
+        set -Ux LD_LIBRARY_PATH "${pkgs.stdenv.cc.cc.lib}/lib"
       '';
       shellAliases = {
         rm = "rm -i";
