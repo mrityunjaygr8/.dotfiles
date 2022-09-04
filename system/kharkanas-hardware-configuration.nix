@@ -14,28 +14,22 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/7d0c43a4-63de-40a5-9293-db2f85279582";
+    { device = "/dev/disk/by-label/NIXOS-ROOT";
       fsType = "btrfs";
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/9bad6524-34d5-4e1f-80fd-2fa0720447fd";
+    { device = "/dev/disk/by-label/NIXOS-HOME";
       fsType = "btrfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/79C8-3805";
+    { device = "/dev/disk/by-label/NIXOS-BOOT";
       fsType = "vfat";
     };
 
-  fileSystems."/var/lib/docker/btrfs" =
-    { device = "/var/lib/docker/btrfs";
-      fsType = "none";
-      options = [ "bind" ];
-    };
-
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/b8967744-53f9-4be3-b423-d966b1094705"; }
+    [ { device = "/dev/disk/by-label/NIXOS-SWAP"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
