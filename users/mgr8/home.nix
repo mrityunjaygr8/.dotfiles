@@ -20,6 +20,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    xclip
     vscodium
     fzf
     vlc
@@ -37,6 +38,7 @@
     nodejs
     nodePackages.npm
     nodePackages.pnpm
+    nodePackages.yarn
     postman
     teams
     ripgrep
@@ -52,6 +54,8 @@
     awscli2
     go
     gopls
+    terraform
+    terragrunt
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ];})
     ( alacritty.overrideAttrs (attrs: {
       postInstall = (attrs.postInstall or "") + ''
