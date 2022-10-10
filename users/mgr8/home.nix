@@ -56,6 +56,11 @@
     gopls
     terraform
     terragrunt
+    gnomeExtensions.appindicator
+    gnomeExtensions.dash-to-dock
+    gnomeExtensions.clipboard-indicator
+    gnomeExtensions.screenshot-tool
+    gnome.gnome-screenshot
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ];})
     ( alacritty.overrideAttrs (attrs: {
       postInstall = (attrs.postInstall or "") + ''
@@ -346,6 +351,7 @@
     };
   };
 
+
   dconf.settings = let 
     custom_shortcuts =
     let
@@ -407,6 +413,14 @@
           toggle-maximized=["<Super>m"];
         };
       };
+
+      extensions = {
+        "org/gnome/shell" = {
+          disable-user-extensions = false;
+          enabled-extensions = ["dash-to-dock@micxgx.gmail.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "gnome-shell-screenshot@ttll.de" "clipboard-indicator@tudmotu.com" "appindicatorsupport@rgcjonas.gmail.com"          ];
+        };
+      };
     in
-      lib.mkMerge [custom_shortcuts wm_keybinds];
+      lib.mkMerge [custom_shortcuts wm_keybinds extensions];
+
 }
