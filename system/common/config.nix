@@ -94,7 +94,6 @@
     htop
     zsh
     git
-    gnomeExtensions.appindicator
   ];
 
   services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
