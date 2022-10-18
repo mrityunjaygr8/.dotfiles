@@ -270,7 +270,7 @@
             owner = "jorgebucaran";
             repo = "nvm.fish";
             rev = "9db8eaf6e3064a962bca398edd42162f65058ae8";
-            sha256 = "sha256-ciUNJrZE1EJ6YeMmEIjX/vDiP2MCG1AYHpdjeQOOSxg=";
+            sha256 = "sha256-LkCpij6i5XEkZGYLx9naO/cnbkUCuemypHwTjvfDzuk=";
           };
         }
         {
@@ -279,7 +279,7 @@
             owner = "justinmayer";
             repo = "virtualfish";
             rev = "e6163a009cad32feb02a55a631c66d1cc3f22eaa";
-            sha256 = "sha256-ciUNJrZE1EJ6YeMmEIjX/vDiP2MCG1AYHpdjeQOOSxg=";
+            sha256 = "sha256-FJxz6zyz1N4F7EcGVPqqO6D9nzvB1GyDdOOvmNcewrI=";
           };
         }
         {
@@ -288,7 +288,7 @@
             owner = "jethrokuan";
             repo = "fzf";
             rev = "479fa67d7439b23095e01b64987ae79a91a4e283";
-            sha256 = "sha256-ciUNJrZE1EJ6YeMmEIjX/vDiP2MCG1AYHpdjeQOOSxg=";
+            sha256 = "sha256-28QW/WTLckR4lEfHv6dSotwkAKpNJFCShxmKFGQQ1Ew=";
           };
         }
       ];
