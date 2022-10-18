@@ -61,8 +61,8 @@
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.screenshot-tool
     gnome.gnome-screenshot
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ];})
-    ( alacritty.overrideAttrs (attrs: {
+    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    (alacritty.overrideAttrs (attrs: {
       postInstall = (attrs.postInstall or "") + ''
         rm -rf $out/share/applications/Alacritty.desktop
       '';
@@ -86,8 +86,8 @@
         defaultBranch = "main";
       };
       credential = {
-          helper = "store";
-        };
+        helper = "store";
+      };
     };
   };
 
@@ -334,93 +334,94 @@
   };
 
   xdg.desktopEntries.alacritty = {
-      name = "Alacritty";
-      genericName = "Terminal";
-      type= "Application";
-      exec = "env -u WAYLAND_DISPLAY alacritty";
-      icon = "Alacritty";
-      categories = ["System" "TerminalEmulator"];
-      comment = "A fast, cross-platform, OpenGL terminal emulator";
-    };
+    name = "Alacritty";
+    genericName = "Terminal";
+    type = "Application";
+    exec = "env -u WAYLAND_DISPLAY alacritty";
+    icon = "Alacritty";
+    categories = [ "System" "TerminalEmulator" ];
+    comment = "A fast, cross-platform, OpenGL terminal emulator";
+  };
 
 
   home.file = {
     ".config/alacritty/" = {
-        source = ../../config/alacritty;
-        recursive = true;
+      source = ../../config/alacritty;
+      recursive = true;
     };
   };
 
 
-  dconf.settings = let 
-    custom_shortcuts =
+  dconf.settings =
     let
-      inherit (builtins) length head tail listToAttrs genList;
-      range = a: b: if a < b then [a] ++ range (a+1) b else [];
-      globalPath = "org/gnome/settings-daemon/plugins/media-keys";
-      path = "${globalPath}/custom-keybindings";
-      mkPath = id: "${globalPath}/custom${toString id}";
-      isEmpty = list: length list == 0;
-      mkSettings = settings:
+      custom_shortcuts =
         let
-          checkSettings = { name, command, binding }@this: this;
-          aux = i: list:
-            if isEmpty list then [] else
-              let
-                hd = head list;
-                tl = tail list;
-                name = mkPath i;
-              in
-                aux (i+1) tl ++ [ {
+          inherit (builtins) length head tail listToAttrs genList;
+          range = a: b: if a < b then [ a ] ++ range (a + 1) b else [ ];
+          globalPath = "org/gnome/settings-daemon/plugins/media-keys";
+          path = "${globalPath}/custom-keybindings";
+          mkPath = id: "${globalPath}/custom${toString id}";
+          isEmpty = list: length list == 0;
+          mkSettings = settings:
+            let
+              checkSettings = { name, command, binding }@this: this;
+              aux = i: list:
+                if isEmpty list then [ ] else
+                let
+                  hd = head list;
+                  tl = tail list;
+                  name = mkPath i;
+                in
+                aux (i + 1) tl ++ [{
                   name = mkPath i;
                   value = checkSettings hd;
-                } ];
-          settingsList = (aux 0 settings);
+                }];
+              settingsList = (aux 0 settings);
+            in
+            listToAttrs (settingsList ++ [
+              {
+                name = globalPath;
+                value = {
+                  custom-keybindings = genList (i: "/${mkPath i}/") (length settingsList);
+                };
+              }
+            ]);
         in
-          listToAttrs (settingsList ++ [
-            {
-              name = globalPath;
-              value = {
-                custom-keybindings = genList (i: "/${mkPath i}/") (length settingsList);
-              };
-            }
-          ]);
-    in
-      mkSettings [
-        {
-          name = "Launch Alacritty";
-          command = "env -u WAYLAND_DISPLAY alacritty";
-          binding = "<Super>Return";
-        }
-        {
-          name = "Launch Firefox";
-          command = "firefox";
-          binding = "<Super>b";
-        }
-      ];
+        mkSettings [
+          {
+            name = "Launch Alacritty";
+            command = "env -u WAYLAND_DISPLAY alacritty";
+            binding = "<Super>Return";
+          }
+          {
+            name = "Launch Firefox";
+            command = "firefox";
+            binding = "<Super>b";
+          }
+        ];
 
       wm_keybinds = {
         "org/gnome/shell/keybindings" = {
-          toggle-message-tray=[];
+          toggle-message-tray = [ ];
         };
         "org/gnome/settings-daemon/plugins/media-keys" = {
-          volume-down=["<Control><Alt>minus" "XF86AudioLowerVolume"];
-          volume-mute=["<Control><Alt>0" "XF86AudioMute"];
-          volume-up=["<Control><Alt>equal" "XF86AudioRaiseVolume"];
+          volume-down = [ "<Control><Alt>minus" "XF86AudioLowerVolume" ];
+          volume-mute = [ "<Control><Alt>0" "XF86AudioMute" ];
+          volume-up = [ "<Control><Alt>equal" "XF86AudioRaiseVolume" ];
         };
         "org/gnome/desktop/wm/keybindings" = {
-          close = ["<Shift><Super>c"];
-          toggle-maximized=["<Super>m"];
+          close = [ "<Shift><Super>c" ];
+          toggle-maximized = [ "<Super>m" ];
         };
       };
 
       extensions = {
         "org/gnome/shell" = {
           disable-user-extensions = false;
-          enabled-extensions = ["dash-to-dock@micxgx.gmail.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "gnome-shell-screenshot@ttll.de" "clipboard-indicator@tudmotu.com" "appindicatorsupport@rgcjonas.gmail.com"          ];
+          enabled-extensions = [ "dash-to-dock@micxgx.gmail.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "gnome-shell-screenshot@ttll.de" "clipboard-indicator@tudmotu.com" "appindicatorsupport@rgcjonas.gmail.com" ];
         };
       };
     in
-      lib.mkMerge [custom_shortcuts wm_keybinds extensions];
+    lib.mkMerge [ custom_shortcuts wm_keybinds extensions ];
 
 }
