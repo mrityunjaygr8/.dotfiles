@@ -42,6 +42,13 @@
             ./system/kharkanas-configuration.nix
           ];
         };
+        black-coral = lib.nixosSystem {
+          inherit system;
+
+          modules = [
+            ./system/black-coral-configuration.nix
+          ];
+        };
       };
     };
 }
