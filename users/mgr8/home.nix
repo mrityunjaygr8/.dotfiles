@@ -34,6 +34,7 @@
     lazydocker
     rustc
     cargo
+    gdb
     neofetch
     nodejs
     nodePackages.npm
