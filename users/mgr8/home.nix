@@ -31,16 +31,19 @@
     gnupg
     tmux
     pinentry
+    direnv
     lazygit
     lazydocker
     rustc
     cargo
     gdb
+    rust-analyzer
     neofetch
     nodejs
     nodePackages.npm
     nodePackages.pnpm
     nodePackages.yarn
+    cypress
     postman
     teams
     ripgrep
@@ -77,6 +80,8 @@
   services.gpg-agent = {
     enable = true;
   };
+
+  services.lorri.enable = true;
 
   programs.git = {
     enable = true;
@@ -300,6 +305,9 @@
         set fish_color_autosuggestion brblack
         set -Ux GIT_ASKPASS ""
         set -Ux LD_LIBRARY_PATH "${pkgs.stdenv.cc.cc.lib}/lib"
+
+        direnv hook fish | source
+        set -g direnv_fish_mode disable_arrow
       '';
       shellAliases = {
         rm = "rm -i";
