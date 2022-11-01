@@ -38,6 +38,7 @@
     cargo
     gdb
     rust-analyzer
+    rustfmt
     neofetch
     nodejs
     nodePackages.npm
