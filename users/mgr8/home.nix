@@ -51,6 +51,7 @@
     fd
     bat
     exa
+    gnumake
     python3
     python310Packages.pip
     docker
