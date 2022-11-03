@@ -427,6 +427,12 @@
         };
       };
 
+      app_menu_config = {
+          "org/gnome/desktop/wm/preferences" = {
+              button-layout = "appmenu:minimize,maximize,close";
+            };
+        };
+
       extensions = {
         "org/gnome/shell" = {
           disable-user-extensions = false;
@@ -434,6 +440,6 @@
         };
       };
     in
-    lib.mkMerge [ custom_shortcuts wm_keybinds extensions ];
+    lib.mkMerge [ custom_shortcuts wm_keybinds extensions app_menu_config ];
 
 }
