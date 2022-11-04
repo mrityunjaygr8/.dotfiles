@@ -123,6 +123,8 @@ return packer.startup(function(use)
   use("kylechui/nvim-surround")
   use({ "Everblush/everblush.nvim", as = "everblush" })
   use("https://git.sr.ht/~whynothugo/lsp_lines.nvim")
+  use 'Yazeed1s/oh-lucy.nvim'
+  use({"rose-pine/neovim", as = "rose-pine"})
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
