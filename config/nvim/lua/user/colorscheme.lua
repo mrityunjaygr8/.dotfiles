@@ -1,9 +1,13 @@
-local status_ok, oh_lucy = pcall(require, "oh-lucy")
+local status_ok, rose_pine = pcall(require, "rose-pine")
 if not status_ok then
   return
 end
 
+rose_pine.setup({
+  disable_italics = true
+})
+
 -- vim.g.catppuccin_flavour = "mocha"
 -- catpuccin.setup()
 -- vim.cmd([[colorscheme catppuccin]])
-vim.cmd([[colorscheme oh-lucy]])
+vim.cmd([[colorscheme rose-pine]])
