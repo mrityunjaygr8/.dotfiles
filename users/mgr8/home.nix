@@ -68,6 +68,7 @@
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.screenshot-tool
     gnome.gnome-screenshot
+    jq
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
     (alacritty.overrideAttrs (attrs: {
       postInstall = (attrs.postInstall or "") + ''
@@ -428,10 +429,10 @@
       };
 
       app_menu_config = {
-          "org/gnome/desktop/wm/preferences" = {
-              button-layout = "appmenu:minimize,maximize,close";
-            };
+        "org/gnome/desktop/wm/preferences" = {
+          button-layout = "appmenu:minimize,maximize,close";
         };
+      };
 
       extensions = {
         "org/gnome/shell" = {
