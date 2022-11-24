@@ -69,6 +69,7 @@
     gnomeExtensions.screenshot-tool
     gnome.gnome-screenshot
     jq
+    calibre
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
     (alacritty.overrideAttrs (attrs: {
       postInstall = (attrs.postInstall or "") + ''
