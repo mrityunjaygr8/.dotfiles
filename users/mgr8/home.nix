@@ -290,7 +290,11 @@
             owner = "justinmayer";
             repo = "virtualfish";
             rev = "e6163a009cad32feb02a55a631c66d1cc3f22eaa";
-            sha256 = "sha256-FJxz6zyz1N4F7EcGVPqqO6D9nzvB1GyDdOOvmNcewrI=";
+            sha256 = "sha256-u6wm+bWCkxxYbtb4wer0AGyVdvuaBiOH1nRmpZssVHo=";
+            postFetch = ''
+              mkdir $out/conf.d
+              mv $out/virtualfish/*.fish $out/conf.d
+            '';
           };
         }
         {
