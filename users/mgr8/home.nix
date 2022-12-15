@@ -313,6 +313,7 @@
         set fish_color_autosuggestion brblack
         set -Ux GIT_ASKPASS ""
         set -Ux LD_LIBRARY_PATH "${pkgs.stdenv.cc.cc.lib}/lib"
+        set VIRTUALFISH_PYTHON_EXEC $(which python)
 
         direnv hook fish | source
         set -g direnv_fish_mode disable_arrow
