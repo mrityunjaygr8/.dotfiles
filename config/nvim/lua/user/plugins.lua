@@ -64,6 +64,7 @@ return packer.startup(function(use)
     "catppuccin/nvim",
     as = "catppuccin",
   })
+  use {'nyoom-engineering/oxocarbon.nvim'}
   use {
     'VonHeikemen/lsp-zero.nvim',
     requires = {

@@ -1,18 +1,3 @@
-font:
-  size: 14
-  normal:
-    # style: Regular
-    family: JetBrainsMono Nerd Font
-  bold:
-    # family: IBM Plex Mono
-    style: Bold
-    family: JetBrainsMono Nerd Font
-
-shell:
-  program: fish
-
-
-# oxocarbon
 colors:
   primary:
     background: '0x161616'
@@ -48,6 +33,3 @@ colors:
     end:
       foreground: '#6e6a86'
       background: '#1f1d2e'
-
-env:
-  TERM: xterm-256color
