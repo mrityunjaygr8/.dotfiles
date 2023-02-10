@@ -19,6 +19,7 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.useOSProber = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Pick only one of the below networking options.
@@ -94,6 +95,9 @@
     htop
     zsh
     git
+    sbctl
+    os-prober
+    mokutil
   ];
 
   services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
