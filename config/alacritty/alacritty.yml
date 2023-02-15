@@ -1,12 +1,14 @@
 font:
   size: 14
+  # antialiasing: 'none'
   normal:
     # style: Regular
-    family: JetBrainsMono Nerd Font
+    family: Berkeley Mono
+    # - family: JetBrainsMono Nerd Font
   bold:
     # family: IBM Plex Mono
     style: Bold
-    family: JetBrainsMono Nerd Font
+    family: Berkeley Mono
 
 shell:
   program: fish
