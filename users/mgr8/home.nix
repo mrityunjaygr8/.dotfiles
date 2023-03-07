@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{config, pkgs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -27,7 +27,7 @@
     fzf
     vlc
     tldr
-    neovim
+    # neovim
     git-crypt
     gnupg
     tmux
@@ -106,6 +106,119 @@
   fonts.fontconfig.enable = true;
 
   programs = {
+    neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+      vimdiffAlias = true;
+      extraConfig = ''
+        luafile $HOME/.config/nvim/lua/user/impatient.lua
+        luafile $HOME/.config/nvim/lua/user/options.lua
+
+        lua << EOF
+        vim.defer_fn(
+          function()
+            vim.cmd [[
+              luafile $HOME/.config/nvim/lua/user/autocommands.lua
+              luafile $HOME/.config/nvim/lua/user/autopairs.lua
+              luafile $HOME/.config/nvim/lua/user/bufferline.lua
+              luafile $HOME/.config/nvim/lua/user/cmp.lua
+              luafile $HOME/.config/nvim/lua/user/colorizer.lua
+              luafile $HOME/.config/nvim/lua/user/comment.lua
+              luafile $HOME/.config/nvim/lua/user/gitsigns.lua
+              luafile $HOME/.config/nvim/lua/user/keymaps.lua
+              luafile $HOME/.config/nvim/lua/user/lsp.lua
+              luafile $HOME/.config/nvim/lua/user/lualine.lua
+              luafile $HOME/.config/nvim/lua/user/nvim-tree.lua
+              luafile $HOME/.config/nvim/lua/user/surround.lua
+              luafile $HOME/.config/nvim/lua/user/telescope.lua
+              luafile $HOME/.config/nvim/lua/user/toggleterm.lua
+              luafile $HOME/.config/nvim/lua/user/whichkey.lua
+            ]]
+          end, 70)
+        EOF
+      '';
+      extraPackages = with pkgs; [
+        nodePackages.pyright
+        tree-sitter
+        code-minimap
+        luaPackages.lua-lsp
+        sumneko-lua-language-server
+        rnix-lsp
+        nodePackages.yaml-language-server nodePackages.bash-language-server
+        nodePackages.vscode-json-languageserver-bin
+        nodePackages.vscode-html-languageserver-bin
+        nodePackages.vscode-css-languageserver-bin
+      ];
+
+      plugins = with pkgs.vimPlugins; [
+        (nvim-treesitter.withPlugins (
+          plugins: with plugins; [
+            nix
+            python
+            dockerfile
+            c
+            css
+            scss
+            bash
+            fish
+            go
+            hcl
+            html
+            javascript
+            json
+            lua
+            make
+            markdown
+            rust
+            sql
+            terraform
+            toml
+            tsx
+            typescript
+            yaml
+          ]
+        ))
+        plenary-nvim
+        popup-nvim
+        nvim-autopairs
+        comment-nvim
+        nvim-web-devicons
+        nvim-tree-lua
+        bufferline-nvim
+        vim-bbye
+        lualine-nvim
+        toggleterm-nvim
+        impatient-nvim
+        indent-blankline-nvim
+        which-key-nvim
+        lazygit-nvim
+
+        vim-nix
+
+
+        lsp-zero-nvim
+        nvim-lspconfig
+        nvim-cmp
+        cmp-buffer
+        cmp-path
+        cmp_luasnip
+        cmp-nvim-lsp
+        cmp-nvim-lua
+        
+        telescope-nvim
+
+        
+
+        nvim-ts-context-commentstring
+        nvim-ts-rainbow
+
+        gitsigns-nvim
+
+        nvim-colorizer-lua
+        nvim-surround
+      ];
+    };
     nix-index = {
       enable = true;
     };
@@ -313,7 +426,6 @@
         # http://fishshell.com/docs/current/index.html#variables-color
         set fish_color_autosuggestion brblack
         set -Ux GIT_ASKPASS ""
-        set -Ux LD_LIBRARY_PATH "${pkgs.stdenv.cc.cc.lib}/lib"
         set VIRTUALFISH_PYTHON_EXEC $(which python)
 
         direnv hook fish | source
