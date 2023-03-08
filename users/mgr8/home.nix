@@ -49,8 +49,6 @@ in
     rustc
     cargo
     gdb
-    rust-analyzer
-    rustfmt
     neofetch
     nodejs
     nodePackages.npm
@@ -123,8 +121,12 @@ in
       vimAlias = true;
       vimdiffAlias = true;
       extraConfig = ''
-        luafile $HOME/.config/nvim/lua/user/impatient.lua
         luafile $HOME/.config/nvim/lua/user/options.lua
+        luafile $HOME/.config/nvim/lua/user/keymaps.lua
+        luafile $HOME/.config/nvim/lua/user/colorscheme.lua
+        luafile $HOME/.config/nvim/lua/user/treesitter.lua
+        luafile $HOME/.config/nvim/lua/user/lsp.lua
+        luafile $HOME/.config/nvim/lua/user/cmp.lua
 
         lua << EOF
         vim.defer_fn(
@@ -133,12 +135,9 @@ in
               luafile $HOME/.config/nvim/lua/user/autocommands.lua
               luafile $HOME/.config/nvim/lua/user/autopairs.lua
               luafile $HOME/.config/nvim/lua/user/bufferline.lua
-              luafile $HOME/.config/nvim/lua/user/cmp.lua
               luafile $HOME/.config/nvim/lua/user/colorizer.lua
               luafile $HOME/.config/nvim/lua/user/comment.lua
               luafile $HOME/.config/nvim/lua/user/gitsigns.lua
-              luafile $HOME/.config/nvim/lua/user/keymaps.lua
-              luafile $HOME/.config/nvim/lua/user/lsp.lua
               luafile $HOME/.config/nvim/lua/user/lualine.lua
               luafile $HOME/.config/nvim/lua/user/nvim-tree.lua
               luafile $HOME/.config/nvim/lua/user/surround.lua
@@ -150,16 +149,21 @@ in
         EOF
       '';
       extraPackages = with pkgs; [
+        lua-language-server
+        rust-analyzer
+        gopls
+        rustfmt
+        shellcheck
+        rnix-lsp
+        terraform-ls
         nodePackages.pyright
+        nodePackages.typescript-language-server
         tree-sitter
         code-minimap
         luaPackages.lua-lsp
-        sumneko-lua-language-server
-        rnix-lsp
-        nodePackages.yaml-language-server nodePackages.bash-language-server
-        nodePackages.vscode-json-languageserver-bin
-        nodePackages.vscode-html-languageserver-bin
-        nodePackages.vscode-css-languageserver-bin
+        nodePackages.yaml-language-server
+        nodePackages.bash-language-server
+        nodePackages.vscode-langservers-extracted
       ];
 
       plugins = with pkgs.vimPlugins; [
@@ -214,13 +218,14 @@ in
         nvim-cmp
         cmp-buffer
         cmp-path
+        luasnip
         cmp_luasnip
         cmp-nvim-lsp
         cmp-nvim-lua
-        
+
         telescope-nvim
 
-        
+
 
         nvim-ts-context-commentstring
         nvim-ts-rainbow
