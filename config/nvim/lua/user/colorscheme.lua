@@ -2,7 +2,6 @@
 --[[ if not status_ok then ]]
 --[[   return ]]
 --[[ end ]]
-
 --[[ rose_pine.setup({ ]]
 --[[   disable_italics = true ]]
 --[[ }) ]]
@@ -11,6 +10,5 @@
 --[[ -- catpuccin.setup() ]]
 --[[ -- vim.cmd([[colorscheme catppuccin]) ]]
 --[[ vim.cmd([[colorscheme rose-pine]) ]]
-
 vim.opt.background = "dark"
-vim.cmd("colorscheme oxocarbon")
+vim.cmd("colorscheme moonfly")

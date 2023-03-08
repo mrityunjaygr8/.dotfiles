@@ -1,5 +1,16 @@
-{config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
+let
+  moonfly = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "moonfly";
+    src = pkgs.fetchFromGitHub {
+      owner = "bluz71";
+      repo = "vim-moonfly-colors";
+      rev = "d3ff722e84a9571acbb489e8e85b2a44bbefb602";
+      hash = "sha256-kvnh3NzKmLzVQ4I1KtZMEAcDZ+gZVF9TFfg1BhswbN4=";
+    };
+  };
+in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -193,6 +204,7 @@
         indent-blankline-nvim
         which-key-nvim
         lazygit-nvim
+        moonfly
 
         vim-nix
 
