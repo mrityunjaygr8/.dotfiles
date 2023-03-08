@@ -1,5 +1,16 @@
 { config, pkgs, lib, ... }:
 
+let
+  moonfly = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "moonfly";
+    src = pkgs.fetchFromGitHub {
+      owner = "bluz71";
+      repo = "vim-moonfly-colors";
+      rev = "d3ff722e84a9571acbb489e8e85b2a44bbefb602";
+      hash = "sha256-kvnh3NzKmLzVQ4I1KtZMEAcDZ+gZVF9TFfg1BhswbN4=";
+    };
+  };
+in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -27,7 +38,7 @@
     fzf
     vlc
     tldr
-    neovim
+    # neovim
     git-crypt
     gnupg
     tmux
@@ -38,8 +49,6 @@
     rustc
     cargo
     gdb
-    rust-analyzer
-    rustfmt
     neofetch
     nodejs
     nodePackages.npm
@@ -106,6 +115,127 @@
   fonts.fontconfig.enable = true;
 
   programs = {
+    neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+      vimdiffAlias = true;
+      extraConfig = ''
+        luafile $HOME/.config/nvim/lua/user/options.lua
+        luafile $HOME/.config/nvim/lua/user/keymaps.lua
+        luafile $HOME/.config/nvim/lua/user/colorscheme.lua
+        luafile $HOME/.config/nvim/lua/user/treesitter.lua
+        luafile $HOME/.config/nvim/lua/user/lsp.lua
+        luafile $HOME/.config/nvim/lua/user/cmp.lua
+
+        lua << EOF
+        vim.defer_fn(
+          function()
+            vim.cmd [[
+              luafile $HOME/.config/nvim/lua/user/autocommands.lua
+              luafile $HOME/.config/nvim/lua/user/autopairs.lua
+              luafile $HOME/.config/nvim/lua/user/bufferline.lua
+              luafile $HOME/.config/nvim/lua/user/colorizer.lua
+              luafile $HOME/.config/nvim/lua/user/comment.lua
+              luafile $HOME/.config/nvim/lua/user/gitsigns.lua
+              luafile $HOME/.config/nvim/lua/user/lualine.lua
+              luafile $HOME/.config/nvim/lua/user/nvim-tree.lua
+              luafile $HOME/.config/nvim/lua/user/surround.lua
+              luafile $HOME/.config/nvim/lua/user/telescope.lua
+              luafile $HOME/.config/nvim/lua/user/toggleterm.lua
+              luafile $HOME/.config/nvim/lua/user/whichkey.lua
+            ]]
+          end, 70)
+        EOF
+      '';
+      extraPackages = with pkgs; [
+        lua-language-server
+        rust-analyzer
+        gopls
+        rustfmt
+        shellcheck
+        rnix-lsp
+        terraform-ls
+        nodePackages.pyright
+        nodePackages.typescript-language-server
+        tree-sitter
+        code-minimap
+        luaPackages.lua-lsp
+        nodePackages.yaml-language-server
+        nodePackages.bash-language-server
+        nodePackages.vscode-langservers-extracted
+      ];
+
+      plugins = with pkgs.vimPlugins; [
+        (nvim-treesitter.withPlugins (
+          plugins: with plugins; [
+            nix
+            python
+            dockerfile
+            c
+            css
+            scss
+            bash
+            fish
+            go
+            hcl
+            html
+            javascript
+            json
+            lua
+            make
+            markdown
+            rust
+            sql
+            terraform
+            toml
+            tsx
+            typescript
+            yaml
+          ]
+        ))
+        plenary-nvim
+        popup-nvim
+        nvim-autopairs
+        comment-nvim
+        nvim-web-devicons
+        nvim-tree-lua
+        bufferline-nvim
+        vim-bbye
+        lualine-nvim
+        toggleterm-nvim
+        impatient-nvim
+        indent-blankline-nvim
+        which-key-nvim
+        lazygit-nvim
+        moonfly
+
+        vim-nix
+
+
+        lsp-zero-nvim
+        nvim-lspconfig
+        nvim-cmp
+        cmp-buffer
+        cmp-path
+        luasnip
+        cmp_luasnip
+        cmp-nvim-lsp
+        cmp-nvim-lua
+
+        telescope-nvim
+
+
+
+        nvim-ts-context-commentstring
+        nvim-ts-rainbow
+
+        gitsigns-nvim
+
+        nvim-colorizer-lua
+        nvim-surround
+      ];
+    };
     nix-index = {
       enable = true;
     };
@@ -313,7 +443,6 @@
         # http://fishshell.com/docs/current/index.html#variables-color
         set fish_color_autosuggestion brblack
         set -Ux GIT_ASKPASS ""
-        set -Ux LD_LIBRARY_PATH "${pkgs.stdenv.cc.cc.lib}/lib"
         set VIRTUALFISH_PYTHON_EXEC $(which python)
 
         direnv hook fish | source
