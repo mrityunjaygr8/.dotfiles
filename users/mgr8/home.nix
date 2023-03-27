@@ -80,6 +80,7 @@ in
     gnome.gnome-screenshot
     jq
     calibre
+    toybox
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
     (alacritty.overrideAttrs (attrs: {
       postInstall = (attrs.postInstall or "") + ''
