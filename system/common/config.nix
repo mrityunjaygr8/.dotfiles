@@ -1,4 +1,3 @@
-
 { config, pkgs, ... }:
 
 {
@@ -24,7 +23,7 @@
 
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
@@ -67,8 +66,8 @@
     pulse.enable = true;
   };
 
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mgr8 = {
@@ -82,7 +81,7 @@
   };
   programs.zsh.enable = true;
   users.extraUsers.mgr8 = {
-      shell = pkgs.zsh;
+    shell = pkgs.zsh;
   };
 
   # List packages installed in system profile. To search, run:
@@ -100,7 +99,7 @@
     mokutil
   ];
 
-  services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
+  # services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 
   virtualisation.docker.enable = true;
   virtualisation.docker.storageDriver = "btrfs";
