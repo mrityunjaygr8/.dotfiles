@@ -8,7 +8,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { lanzaboote, nixpkgs, home-manager, ... }: 
+  outputs = { lanzaboote, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
 
@@ -18,12 +18,13 @@
       };
 
       lib = nixpkgs.lib;
-    in {
+    in
+    {
       homeManagerConfigurations = {
         mgr8 = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
-          modules = [ 
+          modules = [
             ./users/mgr8/home.nix
           ];
         };
@@ -42,22 +43,22 @@
 
           modules = [
             ./system/kharkanas-configuration.nix
-            lanzaboote.nixosModules.lanzaboote
-            ({config, pkgs, lib, ...}: {
-              boot.bootspec.enable = true;
-
-              environment.systemPackages = [
-                # For debugging and troubleshooting Secure Boot.
-                pkgs.sbctl
-              ];
-
-              boot.loader.systemd-boot.enable = lib.mkForce false;
-
-              boot.lanzaboote = {
-                  enable = true;
-                  pkiBundle = "/etc/secureboot";
-                };
-            })
+            # lanzaboote.nixosModules.lanzaboote
+            # ({config, pkgs, lib, ...}: {
+            #   boot.bootspec.enable = true;
+            #
+            #   environment.systemPackages = [
+            #     # For debugging and troubleshooting Secure Boot.
+            #     pkgs.sbctl
+            #   ];
+            #
+            #   boot.loader.systemd-boot.enable = lib.mkForce false;
+            #
+            #   boot.lanzaboote = {
+            #       enable = true;
+            #       pkiBundle = "/etc/secureboot";
+            #     };
+            # })
           ];
 
         };
