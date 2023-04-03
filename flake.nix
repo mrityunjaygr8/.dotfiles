@@ -43,22 +43,22 @@
 
           modules = [
             ./system/kharkanas-configuration.nix
-            # lanzaboote.nixosModules.lanzaboote
-            # ({config, pkgs, lib, ...}: {
-            #   boot.bootspec.enable = true;
-            #
-            #   environment.systemPackages = [
-            #     # For debugging and troubleshooting Secure Boot.
-            #     pkgs.sbctl
-            #   ];
-            #
-            #   boot.loader.systemd-boot.enable = lib.mkForce false;
-            #
-            #   boot.lanzaboote = {
-            #       enable = true;
-            #       pkiBundle = "/etc/secureboot";
-            #     };
-            # })
+            lanzaboote.nixosModules.lanzaboote
+            ({ config, pkgs, lib, ... }: {
+              boot.bootspec.enable = true;
+
+              environment.systemPackages = [
+                # For debugging and troubleshooting Secure Boot.
+                pkgs.sbctl
+              ];
+
+              boot.loader.systemd-boot.enable = lib.mkForce false;
+
+              boot.lanzaboote = {
+                enable = true;
+                pkiBundle = "/etc/secureboot";
+              };
+            })
           ];
 
         };
