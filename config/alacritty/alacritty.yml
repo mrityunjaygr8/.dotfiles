@@ -3,12 +3,12 @@ font:
   # antialiasing: 'none'
   normal:
     # style: Regular
-    family: Berkeley Mono
-    # - family: JetBrainsMono Nerd Font
-  bold:
-    # family: IBM Plex Mono
-    style: Bold
-    family: Berkeley Mono
+    # family: Berkeley Mono
+    family: JetBrainsMono Nerd Font
+  # bold:
+  #   # family: IBM Plex Mono
+  #   style: Bold
+  #   family: Berkeley Mono
 
 shell:
   program: fish
