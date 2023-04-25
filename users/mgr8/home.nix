@@ -58,6 +58,7 @@ in
     postman
     teams
     ripgrep
+    zoxide
     fd
     bat
     exa
@@ -444,6 +445,8 @@ in
         set fish_color_autosuggestion brblack
         set -Ux GIT_ASKPASS ""
         set VIRTUALFISH_PYTHON_EXEC $(which python)
+
+        zoxide init fish | source
 
         direnv hook fish | source
         set -g direnv_fish_mode disable_arrow
