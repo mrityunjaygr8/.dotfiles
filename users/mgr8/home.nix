@@ -197,6 +197,7 @@ in
         ))
         plenary-nvim
         popup-nvim
+        nord-nvim
         nvim-autopairs
         comment-nvim
         nvim-web-devicons
@@ -209,7 +210,7 @@ in
         indent-blankline-nvim
         which-key-nvim
         lazygit-nvim
-        moonfly
+        # moonfly
 
         vim-nix
 
@@ -346,6 +347,8 @@ in
         # Set syntax highlighting colours; var names defined here:
         # http://fishshell.com/docs/current/index.html#variables-color
         set fish_color_autosuggestion brblack
+
+        fish_config theme choose Nord
         set -Ux GIT_ASKPASS ""
         set VIRTUALFISH_PYTHON_EXEC $(which python)
 
@@ -370,10 +373,6 @@ in
         p = "python3";
       };
       functions = {
-        fish_greeting = {
-          description = "Greeting to show when starting a fish shell";
-          body = "echo noot noot";
-        };
         mkdcd = {
           description = "Make a directory tree and enter it";
           body = "mkdir -p $argv[1]; and cd $argv[1]";

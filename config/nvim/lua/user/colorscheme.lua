@@ -11,4 +11,4 @@
 --[[ -- vim.cmd([[colorscheme catppuccin]) ]]
 --[[ vim.cmd([[colorscheme rose-pine]) ]]
 vim.opt.background = "dark"
-vim.cmd("colorscheme moonfly")
+vim.cmd("colorscheme nord")

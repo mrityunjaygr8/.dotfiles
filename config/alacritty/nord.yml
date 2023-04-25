@@ -1,24 +1,6 @@
-font:
-  size: 14
-  # antialiasing: 'none'
-  normal:
-    # style: Regular
-    # family: Berkeley Mono
-    family: JetBrainsMono Nerd Font
-  # bold:
-  #   # family: IBM Plex Mono
-  #   style: Bold
-  #   family: Berkeley Mono
+# Copyright (c) 2016-present Sven Greb <development@svengreb.de>
+# This source code is licensed under the MIT license found in the license file.
 
-shell:
-  program: fish
-
-
-# moonfly
-draw_bold_text_with_bright_colors: true
-
-# Colors
-# nord
 colors:
   primary:
     background: "#2e3440"
@@ -68,5 +50,3 @@ colors:
     cyan: "#6d96a5"
     white: "#aeb3bb"
 
-env:
-  TERM: xterm-256color
