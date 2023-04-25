@@ -60,7 +60,6 @@ in
     ripgrep
     zoxide
     fd
-    bat
     exa
     gnumake
     python3
@@ -116,6 +115,12 @@ in
   fonts.fontconfig.enable = true;
 
   programs = {
+    bat = {
+      enable = true;
+      config = {
+        theme = "Nord";
+      };
+    };
     neovim = {
       enable = true;
       viAlias = true;
