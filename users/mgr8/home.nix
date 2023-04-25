@@ -371,6 +371,8 @@ in
         ll = "exa -alhtaccessed";
       };
       shellAbbrs = {
+        lg = "lazygit";
+        ld = "lazydocker";
         g = "git";
         m = "make";
         n = "nvim";
