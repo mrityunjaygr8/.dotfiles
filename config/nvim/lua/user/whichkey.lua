@@ -89,11 +89,11 @@ local mappings = {
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["F"] = {
+  ["f"] = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files",
   },
-  ["d"] = { "<cmd>Telescope live_grep theme=nord<cr>", "Find Text" },
+  ["F"] = { "<cmd>Telescope live_grep theme=nord<cr>", "Find Text" },
   ["g"] = { "<cmd>LazyGit<cr>", "LazyGit" },
   p = {
     name = "Packer",
