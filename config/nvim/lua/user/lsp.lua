@@ -14,7 +14,7 @@
 --[[ lsp.nvim_workspace() ]]
 --[[ lsp.setup() ]]
 local lsp_servers = { "rnix", "pyright", "gopls", "rust_analyzer", "tsserver", "bashls", "terraformls", "cssls",
-  "jsonls", "lua_ls" }
+  "jsonls", "lua_ls", "clangd" }
 local opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<leader>z", vim.diagnostic.open_float, opts)

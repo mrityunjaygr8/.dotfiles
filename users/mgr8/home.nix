@@ -70,6 +70,7 @@ in
     unzip
     awscli2
     go
+    clang-tools_14
     gopls
     terraform
     terragrunt
