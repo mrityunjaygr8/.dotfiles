@@ -1,14 +1,27 @@
 { config, pkgs, lib, ... }:
 
 let
-  moonfly = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "moonfly";
+  # moonfly = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  #   name = "moonfly";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "bluz71";
+  #     repo = "vim-moonfly-colors";
+  #     rev = "d3ff722e84a9571acbb489e8e85b2a44bbefb602";
+  #     hash = "sha256-kvnh3NzKmLzVQ4I1KtZMEAcDZ+gZVF9TFfg1BhswbN4=";
+  #   };
+  # };
+  github_theme_nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "github-nvim-theme";
     src = pkgs.fetchFromGitHub {
-      owner = "bluz71";
-      repo = "vim-moonfly-colors";
-      rev = "d3ff722e84a9571acbb489e8e85b2a44bbefb602";
-      hash = "sha256-kvnh3NzKmLzVQ4I1KtZMEAcDZ+gZVF9TFfg1BhswbN4=";
+      owner = "projekt0n";
+      repo = "github-nvim-theme";
+      rev = "ea713c37691b2519f56cd801a2330bdf66393d0f";
+      hash = "sha256-MGQvyQj1rLN4tuIRkn3AWKCFXXDlLZ552YM/HTguhpU=";
     };
+    preInstall = ''
+      echo "This file is being removed, otherwise when building help tags, we are getting an error saying duplicate tags"
+      rm -rf ./doc/gt_deprecated.txt
+    '';
   };
 in
 {
@@ -217,6 +230,7 @@ in
         which-key-nvim
         lazygit-nvim
         # moonfly
+        github_theme_nvim
 
         vim-nix
 
