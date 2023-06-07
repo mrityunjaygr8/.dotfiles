@@ -76,6 +76,7 @@ in
     exa
     gnumake
     python3
+    poetry
     python310Packages.pip
     docker
     docker-compose
