@@ -73,6 +73,8 @@ in
     ripgrep
     zoxide
     fd
+    via
+    qmk
     exa
     gnumake
     python3
@@ -80,6 +82,7 @@ in
     python310Packages.pip
     docker
     docker-compose
+    ungoogled-chromium
     zip
     unzip
     awscli2
