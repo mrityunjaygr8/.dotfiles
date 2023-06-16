@@ -133,6 +133,15 @@ in
   fonts.fontconfig.enable = true;
 
   programs = {
+    helix = {
+      enable = true;
+    };
+    direnv = {
+      enable = true;
+      nix-direnv = {
+        enable = true;
+      };
+    };
     bat = {
       enable = true;
       config = {
@@ -408,7 +417,7 @@ in
 
         zoxide init fish | source
 
-        direnv hook fish | source
+        # direnv hook fish | source
         set -g direnv_fish_mode disable_arrow
       '';
       shellAliases = {
