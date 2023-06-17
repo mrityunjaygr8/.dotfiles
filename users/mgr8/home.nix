@@ -53,14 +53,19 @@ in
     tldr
     # neovim
     git-crypt
+    # python
+    python311Packages.python-lsp-server
     gnupg
     tmux
     pinentry
     direnv
+    gitui
     lazygit
     lazydocker
     rustc
     cargo
+    devbox
+    cheat
     gdb
     neofetch
     nodejs
@@ -79,7 +84,7 @@ in
     gnumake
     python3
     poetry
-    python310Packages.pip
+    python311Packages.pip
     docker
     docker-compose
     ungoogled-chromium
@@ -135,6 +140,19 @@ in
   programs = {
     helix = {
       enable = true;
+      settings = {
+        theme = "tokyonight_storm";
+        editor = {
+          line-number = "relative";
+          lsp.display-messages = true;
+          cursor-shape.insert = "bar";
+        };
+        keys.normal = {
+          space.w = ":w";
+          space.q = ":q";
+          esc = ["collapse_selection" "keep_primary_selection"];
+        };
+      };
     };
     direnv = {
       enable = true;
@@ -417,7 +435,7 @@ in
 
         zoxide init fish | source
 
-        # direnv hook fish | source
+        direnv hook fish | source
         set -g direnv_fish_mode disable_arrow
       '';
       shellAliases = {
