@@ -53,6 +53,7 @@ in
     tldr
     # neovim
     git-crypt
+    nnn
     # python
     python311Packages.python-lsp-server
     gnupg
@@ -101,6 +102,24 @@ in
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.screenshot-tool
     gnome.gnome-screenshot
+
+    # LSPs start
+    lua-language-server
+    rust-analyzer
+    gopls
+    rustfmt
+    shellcheck
+    rnix-lsp
+    terraform-ls
+    nodePackages.pyright
+    nodePackages.typescript-language-server
+    tree-sitter
+    code-minimap
+    luaPackages.lua-lsp
+    nodePackages.yaml-language-server
+    nodePackages.bash-language-server
+    nodePackages.vscode-langservers-extracted
+    # LSPs end
     jq
     calibre
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
@@ -140,9 +159,16 @@ in
   programs = {
     helix = {
       enable = true;
+      languages = {
+        language = [{
+          name = "go";
+          config = {goimports = true; gofumpt = true; staticcheck = true; analyses = { unusedparams = true; unreachable = true; };};
+        }];
+      };
       settings = {
         theme = "tokyonight_storm";
         editor = {
+          bufferline = "always";
           line-number = "relative";
           lsp.display-messages = true;
           cursor-shape.insert = "bar";
@@ -150,6 +176,7 @@ in
         keys.normal = {
           space.w = ":w";
           space.q = ":q";
+          space.c = ":buffer-close";
           esc = ["collapse_selection" "keep_primary_selection"];
         };
       };
