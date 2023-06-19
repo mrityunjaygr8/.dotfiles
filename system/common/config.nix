@@ -1,5 +1,5 @@
 
-{ config, pkgs, ... }:
+{ config, pkgs, devenv, ... }:
 
 {
 
@@ -98,6 +98,8 @@
     sbctl
     os-prober
     mokutil
+    cachix
+    devenv.packages.x86_64-linux.devenv
   ];
 
   services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
