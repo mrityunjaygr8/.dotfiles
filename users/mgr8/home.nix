@@ -50,6 +50,7 @@ in
     vscodium
     fzf
     vlc
+    wl-clipboard-x11
     tldr
     # neovim
     git-crypt
@@ -177,6 +178,7 @@ in
           space.w = ":w";
           space.q = ":q";
           space.c = ":buffer-close";
+          space.C = ":buffer-close-others";
           esc = ["collapse_selection" "keep_primary_selection"];
         };
       };
