@@ -50,7 +50,7 @@ in
     vscodium
     fzf
     vlc
-    wl-clipboard-x11
+    wl-clipboard
     tldr
     # neovim
     git-crypt
