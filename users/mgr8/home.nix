@@ -495,25 +495,20 @@ in
         # This was creating a problem when using helix, as it as not using wayland specific 
         # clipboard provider due to this.
         # This function is a workaround for setting the WAYLAND_DISPLAY env
-        if set -q "WAYLAND_DISPLAY"
-            exit
-        end
+        if not set -q "WAYLAND_DISPLAY"
+          if set -q "XDG_SESSION_TYPE"
+              echo "XDG_SESSION_TYPE is set"
+              set SESSION_TYPE "$XDG_SESSION_TYPE"      
 
-        if set -q "XDG_SESSION_TYPE"
-            echo "XDG_SESSION_TYPE is set"
-            set SESSION_TYPE "$XDG_SESSION_TYPE"      
-
-            if test "$SESSION_TYPE" = "wayland"
-                echo "Setting WAYLAND_DISPLAY to 'wayland-0'"
-                set -Ux WAYLAND_DISPLAY "wayland-0"
-                exit
-            else
-                echo "SESSION_TYPE is not 'wayland', exiting"
-                exit
-            end
-        else
-            echo "XDG_SESSION_TYPE is unset, exiting"
-            exit
+              if test "$SESSION_TYPE" = "wayland"
+                  echo "Setting WAYLAND_DISPLAY to 'wayland-0'"
+                  set -Ux WAYLAND_DISPLAY "wayland-0"
+              else
+                  echo "SESSION_TYPE is not 'wayland', exiting"
+              end
+          else
+              echo "XDG_SESSION_TYPE is unset, exiting"
+          end
         end
       '';
       shellAliases = {
