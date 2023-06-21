@@ -158,6 +158,31 @@ in
   fonts.fontconfig.enable = true;
 
   programs = {
+    zellij = {
+      enable = true;
+      enableFishIntegration = true;
+      settings = {
+        copy_command = "wl-copy";
+        simplified_ui = true;
+        pane_frames = false;
+        default_shell = "fish";
+        theme = "tns";
+        # tns is tokyo night storm
+        themes.tns = {
+          fg = "#A9B1D6";
+          bg = "#24283B";
+          black = "#383E5A";
+          red = "#F93357";
+          green = "#9ECE6A";
+          yellow = "#E0AF68";
+          blue = "#7AA2F7";
+          magenta = "#BB9AF7";
+          cyan = "#2AC3DE";
+          white = "#C0CAF5";
+          orange = "#FF9E64";
+        };
+      };
+    };
     helix = {
       enable = true;
       languages = {
