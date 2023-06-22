@@ -491,6 +491,8 @@ in
 
         direnv hook fish | source
         set -g direnv_fish_mode disable_arrow
+
+        set -gx EDITOR hx
         # The WAYLAND_DISPLAY env is not being set in terminals other than GNOME CONSOLE.
         # This was creating a problem when using helix, as it as not using wayland specific 
         # clipboard provider due to this.
