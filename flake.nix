@@ -75,6 +75,15 @@
             ./system/black-coral-configuration.nix
           ];
         };
+        drift-avalii = lib.nixosSystem {
+          inherit system;
+
+          specialArgs = { inherit devenv; };
+          modules = [
+            { _module.args = devenv; }
+            ./system/drift-avalii-configuration.nix
+          ];
+        };
       };
     };
 }
