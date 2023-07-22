@@ -44,6 +44,10 @@ in
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    uget
+    qemu
+    google-cloud-sdk
+    vmware-workstation
     pre-commit
     openssl
     xclip
@@ -192,7 +196,7 @@ in
         }];
       };
       settings = {
-        theme = "tokyonight_storm";
+        theme = "kanagawa";
         editor = {
           bufferline = "always";
           line-number = "relative";
