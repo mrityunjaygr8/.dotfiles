@@ -80,7 +80,7 @@ in
     nodePackages.yarn
     cypress
     postman
-    teams
+    teams-for-linux
     ripgrep
     zoxide
     fd
