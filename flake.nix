@@ -23,6 +23,13 @@
     {
       # packages.x86_64-linux = [devenv.packages.x86_64-linux.devenv];
       homeManagerConfigurations = {
+        mgr8Minimal = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          modules = [
+            ./users/mgr8Minimal/home.nix
+          ];
+        };
         mgr8 = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
