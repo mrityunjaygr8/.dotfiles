@@ -14,11 +14,10 @@
 
   networking.hostName = "drift-avalii"; # Define your hostname.
   networking.extraHosts = ''
-    127.0.0.1 stratin.in
-    127.0.0.1 whoami.stratin.in
-    127.0.0.1 traefik.stratin.in
-    127.0.0.1 portainer.stratin.in
-    127.0.0.1 pihole.stratin.in
+    127.0.0.1 whoami.parham.in
+    127.0.0.1 traefik.parham.in
+    127.0.0.1 portainer.parham.in
+    127.0.0.1 pihole.parham.in
   '';
   hardware.bluetooth.enable = true;
   services.openssh = {
