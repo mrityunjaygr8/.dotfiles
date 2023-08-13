@@ -292,6 +292,9 @@
       source = ../../config/alacritty;
       recursive = true;
     };
+    ".xinitrc" = {
+      source = ../../config/xinitrc;
+    };
   };
 
 

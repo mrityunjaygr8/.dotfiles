@@ -28,6 +28,10 @@
       fsType = "btrfs";
     };
 
+  fileSystems."/mnt/library" =
+    { device = "/dev/disk/by-uuid/63FC-6250";
+      fsType = "exfat";
+    };
   swapDevices =
     [ { device = "/dev/disk/by-label/NIXOS-SWAP"; }
     ];
