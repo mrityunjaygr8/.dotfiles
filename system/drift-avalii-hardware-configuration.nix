@@ -31,6 +31,11 @@
   fileSystems."/mnt/library" =
     { device = "/dev/disk/by-uuid/63FC-6250";
       fsType = "exfat";
+      options = [
+        "rw"
+        "uid=1000"
+        "gid=1000"
+      ];
     };
   swapDevices =
     [ { device = "/dev/disk/by-label/NIXOS-SWAP"; }
