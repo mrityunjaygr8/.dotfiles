@@ -47,7 +47,7 @@ in
     uget
     qemu
     google-cloud-sdk
-    vmware-workstation
+    # vmware-workstation
     pre-commit
     openssl
     xclip
@@ -57,6 +57,7 @@ in
     wl-clipboard
     tldr
     # neovim
+    nil
     git-crypt
     nnn
     # python
@@ -192,7 +193,7 @@ in
       languages = {
         language = [{
           name = "go";
-          config = {goimports = true; gofumpt = true; staticcheck = true; analyses = { unusedparams = true; unreachable = true; };};
+          config = { goimports = true; gofumpt = true; staticcheck = true; analyses = { unusedparams = true; unreachable = true; }; };
         }];
       };
       settings = {
@@ -212,7 +213,7 @@ in
           space.c = ":buffer-close";
           space.C = ":buffer-close-others";
           space.I = ":toggle lsp.display-inlay-hints";
-          esc = ["collapse_selection" "keep_primary_selection"];
+          esc = [ "collapse_selection" "keep_primary_selection" ];
         };
       };
     };
