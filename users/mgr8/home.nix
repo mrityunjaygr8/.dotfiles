@@ -1,29 +1,5 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 
-let
-  # moonfly = pkgs.vimUtils.buildVimPluginFrom2Nix {
-  #   name = "moonfly";
-  #   src = pkgs.fetchFromGitHub {
-  #     owner = "bluz71";
-  #     repo = "vim-moonfly-colors";
-  #     rev = "d3ff722e84a9571acbb489e8e85b2a44bbefb602";
-  #     hash = "sha256-kvnh3NzKmLzVQ4I1KtZMEAcDZ+gZVF9TFfg1BhswbN4=";
-  #   };
-  # };
-  github_theme_nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "github-nvim-theme";
-    src = pkgs.fetchFromGitHub {
-      owner = "projekt0n";
-      repo = "github-nvim-theme";
-      rev = "ea713c37691b2519f56cd801a2330bdf66393d0f";
-      hash = "sha256-MGQvyQj1rLN4tuIRkn3AWKCFXXDlLZ552YM/HTguhpU=";
-    };
-    preInstall = ''
-      echo "This file is being removed, otherwise when building help tags, we are getting an error saying duplicate tags"
-      rm -rf ./doc/gt_deprecated.txt
-    '';
-  };
-in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -50,6 +26,7 @@ in
     # vmware-workstation
     pre-commit
     openssl
+    stylua
     xclip
     vscodium
     fzf
@@ -234,123 +211,6 @@ in
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
-      extraConfig = ''
-        luafile $HOME/.config/nvim/lua/user/options.lua
-        luafile $HOME/.config/nvim/lua/user/keymaps.lua
-        luafile $HOME/.config/nvim/lua/user/colorscheme.lua
-        luafile $HOME/.config/nvim/lua/user/treesitter.lua
-        luafile $HOME/.config/nvim/lua/user/lsp.lua
-        luafile $HOME/.config/nvim/lua/user/cmp.lua
-
-        lua << EOF
-        vim.defer_fn(
-          function()
-            vim.cmd [[
-              luafile $HOME/.config/nvim/lua/user/autocommands.lua
-              luafile $HOME/.config/nvim/lua/user/autopairs.lua
-              luafile $HOME/.config/nvim/lua/user/bufferline.lua
-              luafile $HOME/.config/nvim/lua/user/colorizer.lua
-              luafile $HOME/.config/nvim/lua/user/comment.lua
-              luafile $HOME/.config/nvim/lua/user/gitsigns.lua
-              luafile $HOME/.config/nvim/lua/user/lualine.lua
-              luafile $HOME/.config/nvim/lua/user/nvim-tree.lua
-              luafile $HOME/.config/nvim/lua/user/surround.lua
-              luafile $HOME/.config/nvim/lua/user/telescope.lua
-              luafile $HOME/.config/nvim/lua/user/toggleterm.lua
-              luafile $HOME/.config/nvim/lua/user/whichkey.lua
-            ]]
-          end, 70)
-        EOF
-      '';
-      extraPackages = with pkgs; [
-        lua-language-server
-        rust-analyzer
-        gopls
-        rustfmt
-        shellcheck
-        rnix-lsp
-        terraform-ls
-        nodePackages.pyright
-        nodePackages.typescript-language-server
-        tree-sitter
-        code-minimap
-        luaPackages.lua-lsp
-        nodePackages.yaml-language-server
-        nodePackages.bash-language-server
-        nodePackages.vscode-langservers-extracted
-      ];
-
-      plugins = with pkgs.vimPlugins; [
-        (nvim-treesitter.withPlugins (
-          plugins: with plugins; [
-            nix
-            python
-            dockerfile
-            c
-            css
-            scss
-            bash
-            fish
-            go
-            hcl
-            html
-            javascript
-            json
-            lua
-            make
-            markdown
-            rust
-            sql
-            terraform
-            toml
-            tsx
-            typescript
-            yaml
-          ]
-        ))
-        plenary-nvim
-        popup-nvim
-        nord-nvim
-        nvim-autopairs
-        comment-nvim
-        nvim-web-devicons
-        nvim-tree-lua
-        bufferline-nvim
-        vim-bbye
-        lualine-nvim
-        toggleterm-nvim
-        impatient-nvim
-        indent-blankline-nvim
-        which-key-nvim
-        lazygit-nvim
-        # moonfly
-        github_theme_nvim
-
-        vim-nix
-
-
-        lsp-zero-nvim
-        nvim-lspconfig
-        nvim-cmp
-        cmp-buffer
-        cmp-path
-        luasnip
-        cmp_luasnip
-        cmp-nvim-lsp
-        cmp-nvim-lua
-
-        telescope-nvim
-
-
-
-        nvim-ts-context-commentstring
-        nvim-ts-rainbow
-
-        gitsigns-nvim
-
-        nvim-colorizer-lua
-        nvim-surround
-      ];
     };
     nix-index = {
       enable = true;
@@ -550,7 +410,7 @@ in
 
 
   xdg.configFile.nvim = {
-    source = ../../config/nvim;
+    source = ../../config/lazyvim;
     recursive = true;
   };
 
