@@ -101,6 +101,7 @@
     luaPackages.lua-lsp
     nodePackages.yaml-language-server
     nodePackages.bash-language-server
+    nodePackages.svelte-language-server
     nodePackages.vscode-langservers-extracted
     # LSPs end
     jq

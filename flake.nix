@@ -61,6 +61,7 @@
               environment.systemPackages = [
                 # For debugging and troubleshooting Secure Boot.
                 pkgs.sbctl
+                pkgs.blender
               ];
 
               boot.loader.systemd-boot.enable = lib.mkForce false;
