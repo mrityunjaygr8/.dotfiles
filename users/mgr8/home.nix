@@ -64,7 +64,7 @@
     fd
     via
     qmk
-    exa
+    eza
     gnumake
     python3
     # poetry
@@ -389,7 +389,7 @@
         mv = "mv -i";
         mkdir = "mkdir -p";
         tmux = "tmux -u";
-        ll = "exa -alhtaccessed";
+        ll = "eza -alhtaccessed";
       };
       shellAbbrs = {
         lg = "lazygit";
