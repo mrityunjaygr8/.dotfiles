@@ -57,7 +57,7 @@
     nodePackages.pnpm
     nodePackages.yarn
     cypress
-    postman
+    # postman
     teams-for-linux
     ripgrep
     zoxide
