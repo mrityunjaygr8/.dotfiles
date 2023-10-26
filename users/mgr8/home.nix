@@ -434,6 +434,11 @@
       source = ../../config/alacritty;
       recursive = true;
     };
+    ".config/ghostty/config" = {
+      text = ''
+        command = fish
+      '';
+    };
   };
 
 
