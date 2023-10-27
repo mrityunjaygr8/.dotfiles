@@ -20,6 +20,9 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    jetbrains.goland
+    jetbrains.pycharm-professional
+    libreoffice-fresh
     uget
     qemu
     google-cloud-sdk
@@ -436,6 +439,8 @@
     };
     ".config/ghostty/config" = {
       text = ''
+        font-family = Berkeley Mono
+        font-size = 15
         command = fish
       '';
     };
