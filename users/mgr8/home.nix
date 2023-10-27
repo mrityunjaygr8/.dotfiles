@@ -28,6 +28,7 @@
     google-cloud-sdk
     # vmware-workstation
     pre-commit
+    commit-mono
     openssl
     stylua
     xclip
@@ -439,7 +440,7 @@
     };
     ".config/ghostty/config" = {
       text = ''
-        font-family = Berkeley Mono
+        font-family = CommitMono
         font-size = 15
         command = fish
       '';
