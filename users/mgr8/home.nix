@@ -432,6 +432,18 @@
     comment = "A fast, cross-platform, OpenGL terminal emulator";
   };
 
+  xdg.desktopEntries.ghostty = {
+    name = "Ghostty";
+    type = "Application";
+    genericName = "Terminal";
+    exec = "ghostty";
+    icon = "Alacritty";
+    categories = [
+      "System"
+      "TerminalEmulator"
+    ];
+  };
+
 
   home.file = {
     ".config/alacritty/" = {
