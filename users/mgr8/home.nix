@@ -173,12 +173,12 @@
     };
     helix = {
       enable = true;
-      languages = {
-        language = [{
-          name = "go";
-          config = { goimports = true; gofumpt = true; staticcheck = true; analyses = { unusedparams = true; unreachable = true; }; };
-        }];
-      };
+      # languages = {
+      #   language = [{
+      #     name = "go";
+      #     config = { goimports = true; gofumpt = true; staticcheck = true; analyses = { unusedparams = true; unreachable = true; }; };
+      #   }];
+      # };
       settings = {
         theme = "kanagawa";
         editor = {
