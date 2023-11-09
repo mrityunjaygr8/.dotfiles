@@ -418,7 +418,7 @@
 
 
   xdg.configFile.nvim = {
-    source = ../../config/lazyvim;
+    source = ../../config/nvim;
     recursive = true;
   };
 
@@ -442,6 +442,7 @@
       "System"
       "TerminalEmulator"
     ];
+    comment = "A terminal emulator";
   };
 
 
