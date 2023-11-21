@@ -30,6 +30,7 @@
     pre-commit
     commit-mono
     openssl
+    bruno
     stylua
     xclip
     vscodium
@@ -79,7 +80,7 @@
     ungoogled-chromium
     zip
     unzip
-    awscli2
+    # awscli2
     go
     clang-tools_14
     gopls
