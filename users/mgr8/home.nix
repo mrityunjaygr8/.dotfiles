@@ -23,6 +23,7 @@
     jetbrains.goland
     jetbrains.pycharm-professional
     libreoffice-fresh
+    azure-cli
     uget
     qemu
     google-cloud-sdk
