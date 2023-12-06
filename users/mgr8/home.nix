@@ -64,7 +64,6 @@
     nodePackages.yarn
     cypress
     # postman
-    ( pkgs.callPackage ../../extras/bruno/package.nix {} )
     teams-for-linux
     ripgrep
     zoxide
