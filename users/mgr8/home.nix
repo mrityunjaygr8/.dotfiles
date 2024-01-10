@@ -20,8 +20,8 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    jetbrains.goland
-    jetbrains.pycharm-professional
+    # jetbrains.goland
+    # jetbrains.pycharm-professional
     libreoffice-fresh
     azure-cli
     uget
