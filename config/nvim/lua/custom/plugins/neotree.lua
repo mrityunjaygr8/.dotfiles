@@ -8,7 +8,13 @@ return {
     -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
   config = function() 
-    require("neo-tree").setup({})
+    require("neo-tree").setup({
+      window = {
+        position = "right"
+      }
+    })
+
+    
   end
 }
 
