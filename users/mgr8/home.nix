@@ -24,7 +24,7 @@
     # jetbrains.pycharm-professional
     diff-so-fancy
     libreoffice-fresh
-    zap
+    # zap
     azure-cli
     uget
     qemu
