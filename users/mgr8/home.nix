@@ -22,12 +22,12 @@
   home.packages = with pkgs; [
     # jetbrains.goland
     # jetbrains.pycharm-professional
+    opentofu
     diff-so-fancy
     libreoffice-fresh
     # zap
     azure-cli
     uget
-    qemu
     google-cloud-sdk
     # vmware-workstation
     pre-commit
@@ -121,6 +121,7 @@
       '';
 
     }))
+    (callPackage ./makeself.nix {})
   ];
 
   programs.gpg = { enable = true; };
