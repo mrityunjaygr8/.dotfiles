@@ -114,6 +114,7 @@
     # LSPs end
     jq
     calibre
+    (callPackage ./pulumi.nix {})
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
     (alacritty.overrideAttrs (attrs: {
       postInstall = (attrs.postInstall or "") + ''
