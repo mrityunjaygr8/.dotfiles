@@ -48,9 +48,9 @@
   services.xserver.libinput.enable = true;
 
   # Configure keymap in X11
-  services.xserver.layout = "in";
-  services.xserver.xkbVariant = "eng";
-  services.xserver.xkbOptions = "caps:escape"; # map caps to escape.
+  services.xserver.xkb.layout = "in";
+  services.xserver.xkb.variant = "eng";
+  services.xserver.xkb.options = "caps:escape"; # map caps to escape.
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
