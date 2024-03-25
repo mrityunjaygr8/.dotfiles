@@ -100,7 +100,6 @@
     gopls
     rustfmt
     shellcheck
-    rnix-lsp
     terraform-ls
     nodePackages.pyright
     nodePackages.typescript-language-server
