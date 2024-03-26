@@ -19,6 +19,11 @@
       fsType = "btrfs";
     };
 
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-label/NIXOS-STORE";
+      fsType = "btrfs";
+    };
+
   fileSystems."/home" =
     { device = "/dev/disk/by-label/NIXOS-HOME";
       fsType = "btrfs";
