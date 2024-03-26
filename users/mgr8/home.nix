@@ -24,11 +24,11 @@
     # jetbrains.pycharm-professional
     opentofu
     diff-so-fancy
-    libreoffice-fresh
+    # libreoffice-fresh
     # zap
     azure-cli
     uget
-    google-cloud-sdk
+    # google-cloud-sdk
     # vmware-workstation
     pre-commit
     commit-mono
@@ -49,7 +49,6 @@
     python311Packages.python-lsp-server
     gnupg
     tmux
-    pinentry
     direnv
     gitui
     lazygit
@@ -57,37 +56,30 @@
     rustc
     cargo
     devbox
-    cheat
     gdb
     neofetch
     nodejs
     nodePackages.npm
     nodePackages.pnpm
     nodePackages.yarn
-    cypress
     # postman
-    teams-for-linux
+    # teams-for-linux
     ripgrep
     zoxide
     fd
     via
     qmk
     eza
-    gnumake
     python3
     # poetry
     python311Packages.pip
-    docker
     docker-compose
     ungoogled-chromium
     zip
     unzip
     # awscli2
     go
-    clang-tools_14
     gopls
-    terraform
-    terragrunt
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-dock
     gnomeExtensions.clipboard-indicator
@@ -150,60 +142,6 @@
   fonts.fontconfig.enable = true;
 
   programs = {
-    zellij = {
-      enable = true;
-      # enableFishIntegration = true;
-      settings = {
-        copy_command = "wl-copy";
-        simplified_ui = true;
-        pane_frames = false;
-        default_shell = "fish";
-        theme = "tns";
-        # tns is tokyo night storm
-        themes.tns = {
-          fg = "#A9B1D6";
-          bg = "#24283B";
-          black = "#383E5A";
-          red = "#F93357";
-          green = "#9ECE6A";
-          yellow = "#E0AF68";
-          blue = "#7AA2F7";
-          magenta = "#BB9AF7";
-          cyan = "#2AC3DE";
-          white = "#C0CAF5";
-          orange = "#FF9E64";
-        };
-      };
-    };
-    helix = {
-      enable = true;
-      # languages = {
-      #   language = [{
-      #     name = "go";
-      #     config = { goimports = true; gofumpt = true; staticcheck = true; analyses = { unusedparams = true; unreachable = true; }; };
-      #   }];
-      # };
-      settings = {
-        theme = "kanagawa";
-        editor = {
-          bufferline = "always";
-          line-number = "relative";
-          lsp.display-messages = true;
-          cursor-shape.insert = "bar";
-          lsp.auto-signature-help = true;
-          indent-guides.render = true;
-        };
-        keys.normal = {
-          space.g = ":run-shell-command zellij run -fc -- lazygit";
-          space.w = ":w";
-          space.q = ":q";
-          space.c = ":buffer-close";
-          space.C = ":buffer-close-others";
-          space.I = ":toggle lsp.display-inlay-hints";
-          esc = [ "collapse_selection" "keep_primary_selection" ];
-        };
-      };
-    };
     direnv = {
       enable = true;
       nix-direnv = {

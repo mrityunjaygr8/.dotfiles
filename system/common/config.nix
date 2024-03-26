@@ -77,21 +77,21 @@
     initialPassword = "password";
     uid = 1000;
   };
-  programs.zsh.enable = true;
-  users.extraUsers.mgr8 = {
-      shell = pkgs.zsh;
-  };
+  # programs.zsh.enable = true;
+  # users.extraUsers.mgr8 = {
+  #     shell = pkgs.zsh;
+  # };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # gcc
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    bind
-    htop
-    zsh
-    git
+    # bind
+    # htop
+    # zsh
+    # git
     sbctl
     os-prober
     mokutil
