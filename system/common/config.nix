@@ -103,7 +103,7 @@
   services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
 
   virtualisation.docker.enable = true;
-  virtualisation.docker.package = pkgs.docker_24;
+  virtualisation.docker.package = pkgs.docker_25;
   virtualisation.docker.storageDriver = "btrfs";
 
   # Some programs need SUID wrappers, can be configured further or are
