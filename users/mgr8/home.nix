@@ -62,7 +62,7 @@
     nodePackages.npm
     nodePackages.pnpm
     nodePackages.yarn
-    # postman
+    postman
     # teams-for-linux
     ripgrep
     zoxide
